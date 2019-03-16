@@ -1,21 +1,16 @@
 # River
 
-**TODO: Add description**
+Example app using (rabbitmq's RAFT implementation)[https://github.com/rabbitmq/ra]
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `river` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:river, "~> 0.1.0"}
-  ]
-end
+```bash
+hub clone joshnuss/river
+cd river
+mix deps.get
+iex -S mix
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/river](https://hexdocs.pm/river).
+## License
 
+MIT
