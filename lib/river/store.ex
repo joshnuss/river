@@ -26,7 +26,7 @@ defmodule River.Store do
           {:ok, leader :: server_id} | ra_error() | ra_timeout()
   def write(server, key, value) do
     case :ra.process_command(server, {:write, key, value}) do
-      {:ok, :ok, server} -> {:ok, server}
+      {:ok, :ok, leader} -> {:ok, leader}
       error -> error
     end
   end
@@ -35,7 +35,7 @@ defmodule River.Store do
           {:ok, any(), leader :: server_id} | ra_error() | ra_timeout()
   def delete(server, key) do
     case :ra.process_command(server, {:delete, key}) do
-      {:ok, {result, value}, server} -> {result, value, server}
+      {:ok, {result, value}, leader} -> {result, value, leader}
       error -> error
     end
   end
@@ -44,7 +44,7 @@ defmodule River.Store do
           {:ok, any(), leader :: server_id} | ra_error() | ra_timeout()
   def read(server, key) do
     case :ra.process_command(server, {:read, key}) do
-      {:ok, {result, value}, server} -> {result, value, server}
+      {:ok, {result, value}, leader} -> {result, value, leader}
       error -> error
     end
   end
