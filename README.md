@@ -1,6 +1,6 @@
 # River
 
-Example distributed Key/Value cluster using (rabbitmq's RAFT implementation)[https://github.com/rabbitmq/ra]
+Example distributed Key/Value cluster using [RabbitMQ's RAFT implementation](https://github.com/rabbitmq/ra)
 
 ## Installation
 
