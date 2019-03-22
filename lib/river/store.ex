@@ -12,6 +12,11 @@ defmodule River.Store do
     {new_state, effects, :ok}
   end
 
+  def apply(_meta, {:delete, key}, effects, state) do
+    new_state = Map.delete(state, key)
+    {new_state, effects, :ok}
+  end
+
   def apply(_meta, {:read, key}, effects, state) do
     reply = Map.fetch(state, key)
     {state, effects, reply}
@@ -22,6 +27,15 @@ defmodule River.Store do
   def write(server, key, value) do
     case :ra.process_command(server, {:write, key, value}) do
       {:ok, :ok, server} -> {:ok, server}
+      error -> error
+    end
+  end
+
+  @spec delete(server :: server_id(), key :: term()) ::
+          {:ok, any(), server_id} | ra_error() | ra_timeout()
+  def delete(server, key) do
+    case :ra.process_command(server, {:delete, key}) do
+      {:ok, {result, value}, server} -> {result, value, server}
       error -> error
     end
   end
