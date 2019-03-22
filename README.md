@@ -1,14 +1,21 @@
 # River
 
-Example app using (rabbitmq's RAFT implementation)[https://github.com/rabbitmq/ra]
+Example distributed Key/Value cluster using (rabbitmq's RAFT implementation)[https://github.com/rabbitmq/ra]
 
 ## Installation
 
 ```bash
-hub clone joshnuss/river
+git clone https://github.com/joshnuss/river.git
 cd river
 mix deps.get
-iex -S mix
+```
+
+## Starting the cluster
+
+Run boot script. It forms a cluster of 5 peers, and elects a leader.
+
+```bash
+./boot.sh
 ```
 
 ## License
